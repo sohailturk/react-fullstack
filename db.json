@@ -1,0 +1,54 @@
+{
+  "poducts": [
+    {
+      "id": 1,
+      "name": "Apple iPhone 14",
+      "price": 999.99
+    },
+    {
+      "id": 2,
+      "name": "Samsung Galaxy S22",
+      "price": 799.99
+    },
+    {
+      "id": 3,
+      "name": "Google Pixel 7",
+      "price": 599.99
+    },
+    {
+      "id": 4,
+      "name": "Sony WH-1000XM4 Headphones",
+      "price": 349.99
+    },
+    {
+      "id": 5,
+      "name": "Dell XPS 13 Laptop",
+      "price": 1249.99
+    },
+    {
+      "id": 6,
+      "name": "Apple MacBook Air",
+      "price": 999.99
+    },
+    {
+      "id": 7,
+      "name": "Fitbit Charge 5",
+      "price": 149.99
+    },
+    {
+      "id": 8,
+      "name": "Nikon D3500 Camera",
+      "price": 499.99
+    },
+    {
+      "id": 9,
+      "name": "GoPro HERO10",
+      "price": 399.99
+    },
+    {
+      "id": 10,
+      "name": "Amazon Echo Dot",
+      "price": 49.99
+    }
+  ]
+}

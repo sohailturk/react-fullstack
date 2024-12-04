@@ -1,15 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { ProductCard } from "../ProductCard";
 
 const ProductList = () => {
-  const products = [
-    { id: 1, name: "Laptop", price: 1000 },
-    { id: 2, name: "Phone", price: 500 },
-    { id: 3, name: "Headphones", price: 100 },
-    { id: 4, name: "Tablet", price: 700 },
-    { id: 5, name: "Smartwatch", price: 200 },
-  ];
+  const [products, setProducts] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/poducts");
+        if (!response.status === 200) {
+          throw new Error("Network response was not ok");
+        }
+        console.log(response);
+        const result = await response.data;
+        setProducts(result);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+  if (error) {
+    return <p>{error.message}</p>;
+  }
   return (
     <div>
       <h2>Product List</h2>
