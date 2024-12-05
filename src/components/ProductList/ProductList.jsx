@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { ProductCard } from "../ProductCard";
+import { Spinner } from "../Spinner";
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -14,7 +15,6 @@ const ProductList = () => {
         if (!response.status === 200) {
           throw new Error("Network response was not ok");
         }
-        console.log(response);
         const result = await response.data;
         setProducts(result);
       } catch (err) {
@@ -28,7 +28,7 @@ const ProductList = () => {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <Spinner />;
   }
   if (error) {
     return <p>{error.message}</p>;
