@@ -1,24 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import CartContext from "../../context/CartContex";
 
-const AddToCart = () => {
-  const [quantity, setQuantity] = useState(3);
+const AddToCart = ({ product }) => {
+  const { increaseQuantity, decreaseQuantity, cart } = useContext(CartContext);
 
-  const increaseQuantity = () => {
-    setQuantity(quantity + 1);
-  };
-
-  const decreaseQuantity = () => {
-    setQuantity(quantity - 1);
-  };
+  const quantity = cart[product.id] ? cart[product.id].quantity : 0;
 
   if (quantity === 0) {
-    return <button>Add to cart</button>;
+    return (
+      <button onClick={() => increaseQuantity(product)}>Add to cart</button>
+    );
   } else {
     return (
       <div>
-        <button onClick={increaseQuantity}>+</button>
-        <p>{quantity}</p>
-        <button onClick={decreaseQuantity}>-</button>
+        <button onClick={() => increaseQuantity(product)}>+</button>
+        <span>{quantity}</span>
+        <button onClick={() => decreaseQuantity(product)}>-</button>
       </div>
     );
   }

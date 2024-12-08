@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import axios from "axios";
 import { ProductCard } from "../ProductCard";
 import { Spinner } from "../Spinner";
 
-const ProductList = () => {
+const ProductList = ({ increaseQuantity, decreaseQuantity, cart }) => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -45,4 +45,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default memo(ProductList);
