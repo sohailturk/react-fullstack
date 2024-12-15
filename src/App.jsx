@@ -5,6 +5,7 @@ import CartContext from "./context/CartContex";
 
 const App = () => {
   const [cart, setCart] = useState({});
+  const [showCart, setShowCart] = useState(false);
 
   function increaseQuantity(product) {
     const newCart = {
@@ -37,8 +38,13 @@ const App = () => {
 
   return (
     <CartContext.Provider value={{ cart, increaseQuantity, decreaseQuantity }}>
-      <Cart />
-      <ProductList />
+      <div>
+        <Cart showCart={showCart} setShowCart={setShowCart} />
+        <button onClick={() => setShowCart(!showCart)}>
+          {showCart ? "Close Cart" : "Show Cart"}
+        </button>
+        <ProductList />
+      </div>
     </CartContext.Provider>
   );
 };
