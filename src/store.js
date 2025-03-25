@@ -1,4 +1,5 @@
-const { omit } = require("lodash");
+import { createStore } from "redux";
+import _ from "lodash";
 const cartReducer = (state = { items: {}, isOpen: false }, action) => {
   switch (action.type) {
     case "ADD_TO_CART":
@@ -68,6 +69,13 @@ const cartReducer = (state = { items: {}, isOpen: false }, action) => {
       };
     }
     default:
+      return {
+        state,
+      };
       break;
   }
 };
+
+const store = createStore(cartReducer);
+
+export default store;

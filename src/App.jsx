@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ProductList } from "./components/ProductList";
 import { Cart } from "./components/Cart";
 import CartContext from "./context/CartContex";
+import { Provider } from "react-redux";
 
 const App = () => {
   const [cart, setCart] = useState({});
@@ -37,15 +38,13 @@ const App = () => {
   }
 
   return (
-    <CartContext.Provider value={{ cart, increaseQuantity, decreaseQuantity }}>
-      <div>
-        <Cart showCart={showCart} setShowCart={setShowCart} />
-        <button onClick={() => setShowCart(!showCart)}>
-          {showCart ? "Close Cart" : "Show Cart"}
-        </button>
-        <ProductList />
-      </div>
-    </CartContext.Provider>
+    <div>
+      <Cart showCart={showCart} setShowCart={setShowCart} />
+      <button onClick={() => setShowCart(!showCart)}>
+        {showCart ? "Close Cart" : "Show Cart"}
+      </button>
+      <ProductList />
+    </div>
   );
 };
 
